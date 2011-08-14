@@ -9,7 +9,7 @@ class Sphinx < Formula
   fails_with_llvm "fails with: ld: rel32 out of range in _GetPrivateProfileString from /usr/lib/libodbc.a(SQLGetPrivateProfileString.o)"
 
   def install
-    args = ["--prefix=#{prefix}", "--disable-debug", "--disable-dependency-tracking"]
+    args = ["--prefix=#{prefix}", "--disable-debug", "--disable-dependency-tracking", "--with-mysql=/usr/local/mysql"]
     # configure script won't auto-select PostgreSQL
     args << "--with-pgsql" if `/usr/bin/which pg_config`.size > 0
     args << "--without-mysql" if `/usr/bin/which mysql`.size <= 0
